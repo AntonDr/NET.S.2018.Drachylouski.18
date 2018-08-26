@@ -1,0 +1,9 @@
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\MatrixLogic\MatrixLogic\obj\Debug\MatrixLogic.csprojAssemblyReference.cache
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\MatrixLogic\MatrixLogic\obj\Debug\MatrixLogic.csproj.CoreCompileInputs.cache
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\MatrixLogic\MatrixLogic\bin\Debug\MatrixLogic.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\MatrixLogic\MatrixLogic\bin\Debug\MatrixLogic.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\MatrixLogic\MatrixLogic\bin\Debug\MiscUtil.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\MatrixLogic\MatrixLogic\bin\Debug\MiscUtil.xml
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\MatrixLogic\MatrixLogic\obj\Debug\MatrixLogic.csproj.CopyComplete
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\MatrixLogic\MatrixLogic\obj\Debug\MatrixLogic.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\MatrixLogic\MatrixLogic\obj\Debug\MatrixLogic.pdb

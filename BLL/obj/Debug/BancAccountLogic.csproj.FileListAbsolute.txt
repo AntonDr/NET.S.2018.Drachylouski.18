@@ -1,0 +1,8 @@
+E:\EPAM_Summer\NET.S.9.Bank\BancAccountLogic\bin\Debug\BancAccountLogic.dll
+E:\EPAM_Summer\NET.S.9.Bank\BancAccountLogic\bin\Debug\BancAccountLogic.pdb
+E:\EPAM_Summer\NET.S.9.Bank\BancAccountLogic\bin\Debug\ExchangeRateService.dll
+E:\EPAM_Summer\NET.S.9.Bank\BancAccountLogic\obj\Debug\BancAccountLogic.csprojResolveAssemblyReference.cache
+E:\EPAM_Summer\NET.S.9.Bank\BancAccountLogic\obj\Debug\BancAccountLogic.csproj.CoreCompileInputs.cache
+E:\EPAM_Summer\NET.S.9.Bank\BancAccountLogic\obj\Debug\BancAccountLogic.csproj.CopyComplete
+E:\EPAM_Summer\NET.S.9.Bank\BancAccountLogic\obj\Debug\BancAccountLogic.dll
+E:\EPAM_Summer\NET.S.9.Bank\BancAccountLogic\obj\Debug\BancAccountLogic.pdb

@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BancAccountLogic
+namespace BLL
 {
     public class BankServiceExxceprion : Exception
     {

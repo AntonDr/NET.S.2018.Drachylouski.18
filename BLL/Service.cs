@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AccountNumberGeneratorLogic;
-using BancAccountLogic.Account;
+using BLL.Account;
 using TypeOfAccount;
-using BancAccountLogic.Mappers;
+using BLL.Mappers;
 using BLL.Interface;
 using BLL.Interface.Interface;
 using DAL.Interface;
 using DAL.Interface.DTO;
+using DAL.Interface.Interface;
 
-namespace BancAccountLogic
+namespace BLL
 {
     /// <summary>
     /// Service for work with Bank account
@@ -50,14 +51,18 @@ namespace BancAccountLogic
         /// <exception cref="System.ArgumentException">account</exception>
         public void Deposite(string id, decimal value)
         {
-            var account = repositoryAccounts.GetById(id).ToBllAccount();
+
+            var accountDal = repositoryAccounts.GetById(id);
+            decimal temp = accountDal.Balance;
+
+            var account = accountDal.ToBllAccount();
 
             if (account.Status!=Status.Open)
             {
                throw new ArgumentException($"{nameof(account)} is not-open account");
             }
 
-            account.Deposite(value);
+            account.Deposite(value+temp);
             repositoryAccounts.Update(account.ToDalAccount());
         }
 
@@ -69,12 +74,16 @@ namespace BancAccountLogic
         /// <exception cref="System.ArgumentException">account</exception>
         public void Withdraw(string id, decimal value)
         {
-            var account = repositoryAccounts.GetById(id).ToBllAccount();
+            var accountDal = repositoryAccounts.GetById(id);
+            decimal temp = accountDal.Balance;
+
+            var account = accountDal.ToBllAccount();
+            
             if (account.Status != Status.Open)
             {
                 throw new ArgumentException($"{nameof(account)} is not-open account");
             }
-            account.Withdraw(value);
+            account.Withdraw(value+temp);
             repositoryAccounts.Update(account.ToDalAccount());
         }
 
@@ -88,10 +97,10 @@ namespace BancAccountLogic
         private void OpenAccount(IAccountNumberGenerator id, AccountHolder accountHolder,TypeOfBankScore typeOfBankScore)
         {
             var account = fabric.Create(accountHolder, id.GenerateAccountNumbers(),typeOfBankScore);
-            account.Status = Status.Open;
-            
-            repositoryAccounts.Create(account.ToDalAccount());
+
             repositoryAccountHolders.Create(accountHolder.ToDalAccountHolder());
+
+            repositoryAccounts.Create(account.ToDalAccount());
         }
 
         /// <summary>
@@ -101,16 +110,16 @@ namespace BancAccountLogic
         /// <exception cref="System.ArgumentException">account</exception>
         public void CloseAccount(string id)
         {
-            var account = repositoryAccounts.GetById(id).ToBllAccount();
+            var account = repositoryAccounts.GetById(id);
 
-            if (account.Status == Status.Closed)
+            if (account.AccountStatus == Status.Closed)
             {
                 throw new ArgumentException($"{nameof(account)} already closed");
             }
 
-            account.Status = Status.Closed;
+            account.AccountStatus = Status.Closed;
 
-            repositoryAccounts.Update(account.ToDalAccount());
+            repositoryAccounts.Update(account);
 
         }
 

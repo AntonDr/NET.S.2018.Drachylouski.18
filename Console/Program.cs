@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using AccountNumberGeneratorLogic;
+using BLL.Account;
 using BLL.Interface;
 using BLL.Interface.Interface;
 using ExchangeRateNBRB.Model;
@@ -20,7 +21,7 @@ namespace BankAccountProgram
 
         static Program()
         {
-            resolver = new StandardKernel(new NinjectSettings());
+            resolver = new StandardKernel();
             resolver.Configure();
         }
 
@@ -28,9 +29,12 @@ namespace BankAccountProgram
         {
             var service = resolver.Get<IService>();
             var generator = resolver.Get<IAccountNumberGenerator>();
-            var holde = resolver.Get<IAccountHolder>();
-            service.OpenAccount(generator,holde,TypeOfBankScore.Gold);
            
+            var holer = new AccountHolder("Anton","Drachylouski","djjadjajdj@gmail");
+            service.OpenAccount(generator,holer, TypeOfBankScore.Gold);
+            service.Deposite(1790601405.ToString(),120);
+
+
 
 
             //Service bankService = new Service(new AccountRepository());

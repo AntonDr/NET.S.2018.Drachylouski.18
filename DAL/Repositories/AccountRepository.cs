@@ -1,38 +1,103 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using DAL.Interface;
 using DAL.Interface.DTO;
+using DAL.Interface.Interface;
+using ORM;
+using TypeOfAccount;
 
-namespace DAL
+namespace DAL.Repositories
 {
     public class AccountRepository : IRepository<DalAccount>
     {
-        private List<DalAccount> datalList = new List<DalAccount>();
-        //private List<AccountHolder> lastData = new List<AccountHolder>();
+        private readonly DbContext context;
 
-        public void Create(DalAccount item)
+        public AccountRepository(DbContext uow)
         {
-            datalList.Add(item);
-            //if (!lastData.Contains(item.Holder))
-            //{
-            //    lastData.Add(item.Holder);
-            //}
+            this.context = uow;
+        }
+
+        public IEnumerable<DalAccount> GetAll()
+        {
+            return context.Set<Account>().Select(account => new DalAccount()
+            {
+                Id = account.AccountID,
+                Balance = account.Balance,
+                AccountStatus = (Status) account.AccountStatus,
+                AccountType = (TypeOfBankScore) account.AccountType,
+                BonsuPoint = account.BonsuPoint
+            });
+
+            
+        }
+
+        public DalAccount GetById(string key)
+        { 
+            var account = context.Set<Account>().FirstOrDefault(ormaccount => ormaccount.AccountID == key);
+            //var accountHolder = context.Set<AccountHolder>().Where(x=> x.ID==account.ID);
+            return new DalAccount()
+            {
+                Id = account.AccountID,
+                Balance = account.Balance,
+                AccountStatus = (Status) account.AccountStatus,
+                AccountType = (TypeOfBankScore) Enum.ToObject(typeof(TypeOfBankScore), account.AccountType),
+                BonsuPoint = account.BonsuPoint,
+                DalAccountHolder = new DalAccountHolder()
+                {
+                    Email = account.AccountHolder.Email,
+                    FirstName = account.AccountHolder.FirstName,
+                    LastName = account.AccountHolder.LastName,
+                
+                }
+
+            };
+        }
+
+        public void Create(DalAccount dalAccount)
+        {
+
+
+            var account = new Account
+            {
+                AccountID = dalAccount.Id,
+                AccountStatus = (int) dalAccount.AccountStatus,
+                AccountType = (int) dalAccount.AccountType,
+                Balance = dalAccount.Balance,
+                BonsuPoint = dalAccount.BonsuPoint,
+                AccountHolder = new AccountHolder()
+                {
+                    Email = dalAccount.DalAccountHolder.Email,
+                    FirstName = dalAccount.DalAccountHolder.FirstName,
+                    LastName = dalAccount.DalAccountHolder.LastName,
+                }
+            };
+
+            account.AccountHolder.Accounts.Add(account);
+                
+
+            context.Set<Account>().Add(account);
+          
+            context.SaveChanges();
         }
 
         public void Update(DalAccount item)
         {
-            DalAccount account = GetById(item.Id);
+            
+            var account = context.Set<Account>().FirstOrDefault(ormaccount => ormaccount.AccountID == item.Id);
 
-            int index = datalList.IndexOf(account);
+            account.AccountID = item.Id;
+            account.AccountStatus = (int)item.AccountStatus;
+            account.AccountType = (int)item.AccountType;
+            account.Balance = item.Balance;
+            account.BonsuPoint = item.BonsuPoint;
 
-            datalList[index] = item;
+            context.Entry(account).State = EntityState.Modified;
+
+            context.SaveChanges();
         }
 
-        public DalAccount GetById(string id)
-        {
-            return  datalList.Find(x => x.Id == id);          
-        }
     }
 }

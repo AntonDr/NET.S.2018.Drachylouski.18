@@ -2,7 +2,7 @@
 using DAL.Interface.DTO;
 using TypeOfAccount;
 
-namespace BancAccountLogic.Account
+namespace BLL.Account
 {
     /// <summary>
     /// 
@@ -32,6 +32,12 @@ namespace BancAccountLogic.Account
         {
             this.Holder = accountHolder;
             Id = id;
+        }
+
+        public Account(string id, AccountHolder accountHolder, decimal balance, int bonusPoints):this(id,accountHolder)
+        {
+            Balance = balance;
+            BonusPoints = bonusPoints;
         }
         #endregion
 

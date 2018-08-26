@@ -1,4 +1,4 @@
-﻿namespace BancAccountLogic.Account
+﻿namespace BLL.Account
 {
     /// <summary>
     /// 
@@ -12,6 +12,11 @@
         /// <param name="id">The identifier.</param>
         /// <param name="accountHolder">The account holder.</param>
         public BaseAccount(string id, AccountHolder accountHolder) : base(id, accountHolder) { }
+
+        public BaseAccount(string id, AccountHolder accountHolder, decimal balance, int bonusPoints) : base(id,
+            accountHolder, balance, bonusPoints)
+        {
+        }
 
         /// <summary>
         /// Bonuses the сalculation.

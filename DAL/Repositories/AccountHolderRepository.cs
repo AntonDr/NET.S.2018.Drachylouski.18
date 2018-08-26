@@ -1,45 +1,96 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DAL.Interface;
 using DAL.Interface.DTO;
+using DAL.Interface.Interface;
+using ORM;
+using TypeOfAccount;
 
 namespace DAL.Repositories
 {
     public class AccountHolderRepository : IRepository<DalAccountHolder>
     {
-        private List<DalAccountHolder> datalList = new List<DalAccountHolder>();
-        //private List<AccountHolder> lastData = new List<AccountHolder>();
+        private readonly DbContext context;
+
+        public AccountHolderRepository(DbContext uow)
+        {
+            this.context = uow;
+        }
 
         public void Create(DalAccountHolder item)
         {
-            //datalList.Add(item);
-            if (!datalList.Contains(item))
+            var accountHolder = new AccountHolder()
             {
-                datalList.Add(item);
+                Email = item.Email,
+                FirstName = item.FirstName,
+                LastName = item.LastName,
+                //ListAccount = item.ListId
+            };
+
+            var flagContains = context.Set<AccountHolder>().FirstOrDefault(x=> x.Email==item.Email);
+
+            if (flagContains==null)
+            {
+                context.Set<AccountHolder>().Add(accountHolder);
             }
             else
             {
                 Update(item);
             }
-        }
 
-        //public bool Constains(AccountHolder item) => datalList.Contains(item);
+            context.SaveChanges();
+        }
 
         public void Update(DalAccountHolder item)
         {
-            DalAccountHolder accountHolder = datalList.Find(x => item==x);
+            //var accountHolderTemp = new AccountHolder()
+            //{
+            //    Email = item.Email,
+            //    FirstName = item.FirstName,
+            //    LastName = item.LastName,
+            //    ListAccount = item.ListId
+            //};
 
-            int index = datalList.IndexOf(accountHolder);
+            var accountHolder = context.Set<AccountHolder>().FirstOrDefault(x => x.Email == item.Email);
+            accountHolder.Email = item.Email;
+            accountHolder.FirstName = item.FirstName;
+            accountHolder.LastName = item.LastName;
+            //accountHolder.ListAccount = item.ListId;
 
-            datalList[index] = item;
+            context.Entry(accountHolder).State = EntityState.Modified;
+
+            context.SaveChanges();
         }
 
         public DalAccountHolder GetById(string email)
         {
-            return datalList.Find(x => x.Email == email);
+            var accountHolder = context.Set<AccountHolder>().FirstOrDefault(x => x.Email == email);
+
+            return new DalAccountHolder()
+            {
+                Email = accountHolder.Email,
+                FirstName = accountHolder.FirstName,
+                LastName = accountHolder.LastName,
+                //ListId = accountHolder.ListAccount
+            };
+        }
+  
+        public IEnumerable<DalAccountHolder> GetAll()
+        {
+            return context.Set<AccountHolder>().Select(accountHolder => new DalAccountHolder()
+            {
+
+
+                Email = accountHolder.Email,
+                FirstName = accountHolder.FirstName,
+                LastName = accountHolder.LastName,
+                //ListId = accountHolder.ListAccount
+
+            });
+            
         }
     }
 }
+

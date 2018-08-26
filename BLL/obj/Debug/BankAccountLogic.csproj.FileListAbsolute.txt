@@ -1,0 +1,14 @@
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\obj\Debug\BankAccountLogic.csprojResolveAssemblyReference.cache
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\obj\Debug\BankAccountLogic.csproj.CoreCompileInputs.cache
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\obj\Debug\BancAccountLogic.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\obj\Debug\BancAccountLogic.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\bin\Debug\BancAccountLogic.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\bin\Debug\BancAccountLogic.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\bin\Debug\Account.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\bin\Debug\AccountNumberGeneratorLogic.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\bin\Debug\DAL.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\bin\Debug\ExchangeRateService.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\bin\Debug\AccountNumberGeneratorLogic.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\bin\Debug\Account.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\bin\Debug\DAL.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\obj\Debug\BankAccountLogic.csproj.CopyComplete

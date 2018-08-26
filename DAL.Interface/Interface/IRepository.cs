@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using DAL.Interface.DTO;
 
-namespace DAL.Interface
+namespace DAL.Interface.Interface
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T>
     {
         T GetById(string id);
         void Create(T item);
         void Update(T item);
+        IEnumerable<T> GetAll();
     }
 }

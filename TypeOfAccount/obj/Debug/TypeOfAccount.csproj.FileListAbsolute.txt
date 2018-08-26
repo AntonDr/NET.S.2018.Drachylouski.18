@@ -1,0 +1,11 @@
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\TypeOfAccount\bin\Debug\TypeOfAccount.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\TypeOfAccount\bin\Debug\TypeOfAccount.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\TypeOfAccount\obj\Debug\TypeOfAccount.csprojAssemblyReference.cache
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\TypeOfAccount\obj\Debug\TypeOfAccount.csproj.CoreCompileInputs.cache
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\TypeOfAccount\obj\Debug\TypeOfAccount.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.09\TypeOfAccount\obj\Debug\TypeOfAccount.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\TypeOfAccount\bin\Debug\TypeOfAccount.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\TypeOfAccount\bin\Debug\TypeOfAccount.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\TypeOfAccount\obj\Debug\TypeOfAccount.csproj.CoreCompileInputs.cache
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\TypeOfAccount\obj\Debug\TypeOfAccount.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\TypeOfAccount\obj\Debug\TypeOfAccount.pdb

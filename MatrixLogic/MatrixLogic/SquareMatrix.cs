@@ -21,7 +21,7 @@ namespace MatrixLogic
         /// <summary>
         /// The matrix
         /// </summary>
-        protected T[][] matrix;
+        private T[][] matrix;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SquareMatrix{T}"/> class.
@@ -120,7 +120,7 @@ namespace MatrixLogic
         /// <param name="e">The <see cref="ChangeElementEventArgs"/> instance containing the event data.</param>
         protected virtual void OnChangeElementEventHandler(ChangeElementEventArgs e)
         {
-            ChangeElementEventHandler(this, e);
+            ChangeElementEventHandler?.Invoke(this, e);
         }
     }
 }

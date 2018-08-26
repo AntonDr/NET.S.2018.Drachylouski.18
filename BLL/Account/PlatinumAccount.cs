@@ -1,4 +1,4 @@
-﻿namespace BancAccountLogic.Account
+﻿namespace BLL.Account
 {
     /// <summary>
     /// 

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BancAccountLogic.Account;
+using BLL.Account;
 
-namespace BancAccountLogic.Mappers
+namespace BLL.Mappers
 {
     public static class BllFakeMappers
     {
@@ -15,16 +15,18 @@ namespace BancAccountLogic.Mappers
             return new DalAccount()
             {
                 Id = account.Id,
-                AccounType = account.TypeOfBankScore,
-                Banance = account.Balance,
-                BonsuPoint = account.BonusPoints
+                AccountStatus = account.Status,
+                AccountType = account.TypeOfBankScore,
+                Balance = account.Balance,
+                BonsuPoint = account.BonusPoints,
+                DalAccountHolder = ToDalAccountHolder(account.Holder)
             };
         }
 
         public static Account.Account ToBllAccount(this DalAccount dalAccount)
         {
             return new AccountFabric().Create(ToBllAccountHolder(dalAccount.DalAccountHolder), dalAccount.Id,
-                dalAccount.AccounType);
+                dalAccount.AccountType,dalAccount.AccountStatus);
         }
 
         public static DalAccountHolder ToDalAccountHolder(this AccountHolder accountHolder)

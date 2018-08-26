@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using BLL.Interface.Interface;
 
-namespace BancAccountLogic.Account
+namespace BLL.Account
 {
     /// <summary>
     /// 
@@ -39,7 +39,7 @@ namespace BancAccountLogic.Account
 
         public void AddAccount(string id)
         {
-            listOfAccounts.Add(id);
+            listOfAccounts?.Add(id);
         }
         /// <summary>
         /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.

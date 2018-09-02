@@ -12,6 +12,6 @@ namespace AccountNumberGeneratorLogic
         /// Generates the account numbers.
         /// </summary>
         /// <returns></returns>
-        public string GenerateAccountNumbers() => Guid.NewGuid().GetHashCode().ToString();
+        public string GenerateAccountNumbers() => Math.Abs(Guid.NewGuid().GetHashCode()).ToString();
     }
 }

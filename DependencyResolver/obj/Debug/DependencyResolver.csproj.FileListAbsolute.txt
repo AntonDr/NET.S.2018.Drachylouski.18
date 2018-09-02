@@ -28,3 +28,5 @@ E:\EPAM_Summer\NET.S.2018.Drachylouski.18\DependencyResolver\obj\Debug\Dependenc
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\DependencyResolver\obj\Debug\DependencyResolver.csproj.CopyComplete
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\DependencyResolver\obj\Debug\DependencyResolver.dll
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\DependencyResolver\obj\Debug\DependencyResolver.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\DependencyResolver\bin\Debug\Ninject.Web.Common.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\DependencyResolver\bin\Debug\Ninject.Web.Common.xml

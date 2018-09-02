@@ -17,12 +17,10 @@ E:\EPAM_Summer\NET.S.2018.Drachylouski.09\BankAccountLogic\bin\Debug\TypeOfAccou
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\bin\Debug\BLL.Interface.dll
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\bin\Debug\DAL.Interface.dll
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\bin\Debug\ExchangeRateService.dll
-E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\bin\Debug\Ninject.dll
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\bin\Debug\TypeOfAccount.dll
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\bin\Debug\BLL.Interface.pdb
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\bin\Debug\DAL.Interface.pdb
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\bin\Debug\TypeOfAccount.pdb
-E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\bin\Debug\Ninject.xml
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\BLL\obj\Debug\BLL.csproj.CopyComplete

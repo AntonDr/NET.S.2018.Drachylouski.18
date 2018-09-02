@@ -22,13 +22,19 @@ namespace DAL.Repositories
 
         public IEnumerable<DalAccount> GetAll()
         {
-            return context.Set<Account>().Select(account => new DalAccount()
+            return context.Set<Account>().ToArray().Select(account => new DalAccount()
             {
                 Id = account.AccountID,
                 Balance = account.Balance,
                 AccountStatus = (Status) account.AccountStatus,
                 AccountType = (TypeOfBankScore) account.AccountType,
-                BonsuPoint = account.BonsuPoint
+                BonsuPoint = account.BonsuPoint,
+                DalAccountHolder = new DalAccountHolder()
+                {
+                    Email = account.AccountHolder.Email,
+                    FirstName = account.AccountHolder.FirstName,
+                    LastName = account.AccountHolder.LastName
+                }
             });
 
             

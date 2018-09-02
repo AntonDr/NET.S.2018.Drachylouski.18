@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\AccountEntity.cs" />
+    <Compile Include="Entities\AccountHolderEntity.cs" />
     <Compile Include="Interface\IAccountHolder.cs" />
     <Compile Include="Interface\IAccountNumberGenerator.cs" />
     <Compile Include="Interface\IService.cs" />

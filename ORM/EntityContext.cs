@@ -1,9 +1,12 @@
+using System.Data.Entity.Infrastructure;
+
 namespace ORM
 {
     using System;
     using System.Data.Entity;
     using System.Linq;
 
+    //[DbConfigurationType(typeof(DbContextConfiguration))]
     public class EntityContext : DbContext
     {
         // Your context has been configured to use a 'EntityContext' connection string from your application's 

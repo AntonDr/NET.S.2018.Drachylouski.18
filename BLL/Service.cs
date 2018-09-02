@@ -8,6 +8,7 @@ using BLL.Account;
 using TypeOfAccount;
 using BLL.Mappers;
 using BLL.Interface;
+using BLL.Interface.Entities;
 using BLL.Interface.Interface;
 using DAL.Interface;
 using DAL.Interface.DTO;
@@ -30,8 +31,7 @@ namespace BLL
 
         /// <summary>
         /// The fabric
-        /// </summary>
-        private AccountFabric fabric = new AccountFabric();
+        /// </summary>;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Service"/> class.
@@ -66,6 +66,16 @@ namespace BLL
             repositoryAccounts.Update(account.ToDalAccount());
         }
 
+        public IEnumerable <AccountEntity> GetAll()
+        {
+            var temp = repositoryAccounts.GetAll();
+
+            foreach (var item in temp)
+            {
+                yield return item.ToBllAccount().ToAccountEntity();
+            }
+        }
+
         /// <summary>
         /// Withdraws the specified identifier.
         /// </summary>
@@ -96,7 +106,7 @@ namespace BLL
         /// <param name="typeOfBankScore">The type of bank score.</param>
         private void OpenAccount(IAccountNumberGenerator id, AccountHolder accountHolder,TypeOfBankScore typeOfBankScore)
         {
-            var account = fabric.Create(accountHolder, id.GenerateAccountNumbers(),typeOfBankScore);
+            var account = AccountFabric.Create(accountHolder, id.GenerateAccountNumbers(),typeOfBankScore);
 
             repositoryAccountHolders.Create(accountHolder.ToDalAccountHolder());
 

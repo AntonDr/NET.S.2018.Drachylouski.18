@@ -122,7 +122,7 @@ namespace BLL.Account
         /// <exception cref="System.ArgumentException">value</exception>
         public void Deposite(decimal value)
         {
-            if (value <= 0)
+            if (value < 0)
             {
                 throw new ArgumentException($"{nameof(value)} can't be not-positive");
             }

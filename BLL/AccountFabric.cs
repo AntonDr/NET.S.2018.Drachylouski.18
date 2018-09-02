@@ -14,9 +14,9 @@ namespace BLL
     /// <summary>
     /// Fabric method pattern
     /// </summary>
-    public class AccountFabric
+    public static class AccountFabric
     {
-        public Account.Account Create(AccountHolder accountHolder, string id, TypeOfBankScore typeOfBankScore,Status status = Status.Open)
+        public static Account.Account Create(AccountHolder accountHolder, string id, TypeOfBankScore typeOfBankScore,Status status = Status.Open)
         {
             Account.Account account = null;
 
@@ -46,6 +46,14 @@ namespace BLL
                 default:
                     throw new ArgumentException($"Invalid {nameof(typeOfBankScore)}");
             }
+        }
+
+        public static Account.Account Create(AccountHolder accountHolder, string id, TypeOfBankScore typeOfBankScore,
+            decimal balance, Status status = Status.Open)
+        {
+            var account = Create(accountHolder, id, typeOfBankScore, status);
+            account.Deposite(balance);
+            return account;
         }
     }
 }

@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BLL.Account;
+using BLL.Interface.Entities;
 
 namespace BLL.Mappers
 {
-    public static class BllFakeMappers
+    public static class BllToDllMappers
     {
         public static DalAccount ToDalAccount(this Account.Account account)
         {
@@ -25,8 +26,8 @@ namespace BLL.Mappers
 
         public static Account.Account ToBllAccount(this DalAccount dalAccount)
         {
-            return new AccountFabric().Create(ToBllAccountHolder(dalAccount.DalAccountHolder), dalAccount.Id,
-                dalAccount.AccountType,dalAccount.AccountStatus);
+            return AccountFabric.Create(ToBllAccountHolder(dalAccount.DalAccountHolder), dalAccount.Id,
+                dalAccount.AccountType,dalAccount.Balance,dalAccount.AccountStatus);
         }
 
         public static DalAccountHolder ToDalAccountHolder(this AccountHolder accountHolder)
@@ -35,14 +36,39 @@ namespace BLL.Mappers
             {
                 FirstName = accountHolder.FirstName,
                 LastName = accountHolder.LastName,
-                Email = accountHolder.Email,
-                ListId = accountHolder.listOfAccounts
+                Email = accountHolder.Email
             };
         }
 
         public static AccountHolder ToBllAccountHolder(this DalAccountHolder dalAccountHolder)
         {
-            return new AccountHolder(dalAccountHolder.FirstName,dalAccountHolder.LastName,dalAccountHolder.Email,dalAccountHolder.ListId);
+            return new AccountHolder(dalAccountHolder.FirstName,dalAccountHolder.LastName,dalAccountHolder.Email);
+        }
+
+        public static AccountEntity ToAccountEntity(this Account.Account account)
+        {
+            return new AccountEntity()
+            {
+                Id = account.Id,
+                AccountHolder = new AccountHolderEntity()
+                {
+                    Email = account.Holder.Email,
+                    FirstName = account.Holder.FirstName,
+                    LastName = account.Holder.LastName
+                },
+                AccountStatus = account.Status,
+                AccountType = account.TypeOfBankScore,
+                Balance = account.Balance,
+                BonsuPoint = account.BonusPoints
+            };
+        }
+
+        public static Account.Account ToBllAccount(this AccountEntity account)
+        {
+            return AccountFabric.Create(
+                new AccountHolder(account.AccountHolder.FirstName, account.AccountHolder.LastName,
+                    account.AccountHolder.Email), account.Id, account.AccountType, account.Balance,
+                account.AccountStatus);
         }
     }
 }

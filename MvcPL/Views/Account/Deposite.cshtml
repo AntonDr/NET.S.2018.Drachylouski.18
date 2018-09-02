@@ -1,0 +1,41 @@
+﻿@using MvcPL.Models
+@model IEnumerable<MvcPL.Models.AccountViewModel>
+
+@{
+    ViewBag.Title = "Deposite";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Deposite</legend>
+
+        <div class="editor-label">
+            @Html.Label("Amount")
+        </div>
+        <div class="editor-field">
+            @Html.Editor("amount")
+        </div>
+        <div class="editor-label">
+            @Html.Label("id")
+        </div>
+        <div class="editor-field">
+            @Html.Editor("id")
+        </div>
+        <p>
+            <input type="submit" value="Deposite" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to user's list", "Index")
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

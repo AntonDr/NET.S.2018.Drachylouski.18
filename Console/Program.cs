@@ -31,7 +31,7 @@ namespace BankAccountProgram
             var generator = resolver.Get<IAccountNumberGenerator>();
            
             var holer = new AccountHolder("Anton","Drachylouski","djjadjajdj@gmail");
-            service.OpenAccount(generator,holer, TypeOfBankScore.Gold);
+            //ervice.OpenAccount(generator,holer, TypeOfBankScore.Gold);
             service.Deposite(1790601405.ToString(),120);
 
 

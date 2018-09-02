@@ -57,3 +57,5 @@ E:\EPAM_Summer\NET.S.2018.Drachylouski.18\Console\bin\Debug\ORM.dll.config
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\Console\bin\Debug\DependencyResolver.dll.config
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\Console\bin\Debug\EntityFramework.SqlServer.dll
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\Console\bin\Debug\EntityFramework.SqlServer.xml
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\Console\bin\Debug\Ninject.Web.Common.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.18\Console\bin\Debug\Ninject.Web.Common.xml

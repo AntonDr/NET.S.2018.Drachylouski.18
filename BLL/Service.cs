@@ -28,6 +28,8 @@ namespace BLL
 
         private readonly IRepository<DalAccountHolder> repositoryAccountHolders;
 
+        private readonly IAccountNumberGenerator numberGenerator;
+
 
         /// <summary>
         /// The fabric
@@ -37,10 +39,11 @@ namespace BLL
         /// Initializes a new instance of the <see cref="Service"/> class.
         /// </summary>
         /// <param name="repository">The repository.</param>
-        public Service(IRepository<DalAccount> repository,IRepository<DalAccountHolder> repositoryAccountHolders)
+        public Service(IRepository<DalAccount> repository,IRepository<DalAccountHolder> repositoryAccountHolders,IAccountNumberGenerator accountNumberGenerator)
         {
             this.repositoryAccounts = repository;
             this.repositoryAccountHolders = repositoryAccountHolders;
+            this.numberGenerator = accountNumberGenerator;
         }
 
         /// <summary>
@@ -52,17 +55,14 @@ namespace BLL
         public void Deposite(string id, decimal value)
         {
 
-            var accountDal = repositoryAccounts.GetById(id);
-            decimal temp = accountDal.Balance;
-
-            var account = accountDal.ToBllAccount();
+            var account = repositoryAccounts.GetById(id).ToBllAccount();
 
             if (account.Status!=Status.Open)
             {
                throw new ArgumentException($"{nameof(account)} is not-open account");
             }
 
-            account.Deposite(value+temp);
+            account.Deposite(value);
             repositoryAccounts.Update(account.ToDalAccount());
         }
 
@@ -84,16 +84,14 @@ namespace BLL
         /// <exception cref="System.ArgumentException">account</exception>
         public void Withdraw(string id, decimal value)
         {
-            var accountDal = repositoryAccounts.GetById(id);
-            decimal temp = accountDal.Balance;
-
-            var account = accountDal.ToBllAccount();
-            
+            var account = repositoryAccounts.GetById(id).ToBllAccount();
+                  
             if (account.Status != Status.Open)
             {
                 throw new ArgumentException($"{nameof(account)} is not-open account");
             }
-            account.Withdraw(value+temp);
+
+            account.Withdraw(value);
             repositoryAccounts.Update(account.ToDalAccount());
         }
 
@@ -104,9 +102,11 @@ namespace BLL
         /// <param name="id">The identifier.</param>
         /// <param name="accountHolder">The account holder.</param>
         /// <param name="typeOfBankScore">The type of bank score.</param>
-        private void OpenAccount(IAccountNumberGenerator id, AccountHolder accountHolder,TypeOfBankScore typeOfBankScore)
+        public void OpenAccount(string firstName,string lastName,string email,TypeOfBankScore typeOfBankScore)
         {
-            var account = AccountFabric.Create(accountHolder, id.GenerateAccountNumbers(),typeOfBankScore);
+            var accountHolder = new AccountHolder(firstName, lastName, email);
+
+            var account = AccountFabric.Create(accountHolder, numberGenerator.GenerateAccountNumbers(),typeOfBankScore);
 
             repositoryAccountHolders.Create(accountHolder.ToDalAccountHolder());
 
@@ -134,10 +134,7 @@ namespace BLL
         }
 
 
-        public void OpenAccount(IAccountNumberGenerator id, IAccountHolder accountHolder,TypeOfBankScore typeOfBankScore)
-        {
-            OpenAccount(id,accountHolder as AccountHolder, typeOfBankScore);
-        }
+      
     }
 
 }

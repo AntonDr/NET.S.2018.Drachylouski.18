@@ -1,4 +1,3 @@
-E:\EPAM_Summer\NET.S.2018.Drachylouski.18\ORM\obj\Debug\ORM.csprojAssemblyReference.cache
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\ORM\obj\Debug\ORM.csproj.CoreCompileInputs.cache
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\ORM\bin\Debug\ORM.dll.config
 E:\EPAM_Summer\NET.S.2018.Drachylouski.18\ORM\bin\Debug\ORM.dll

@@ -19,18 +19,21 @@
     </div>
     <div class="editor-field">
         @Html.EditorFor(model => model.HolderFirstName)
+        @Html.ValidationMessageFor(model => model.HolderFirstName)
     </div>
     <div class="editor-label">
         @Html.LabelFor(model => model.HolderLastName)
     </div>
     <div class="editor-field">
         @Html.EditorFor(model => model.HolderLastName)
+        @Html.ValidationMessageFor(model => model.HolderLastName)
     </div>
     <div class="editor-label">
         @Html.LabelFor(model => model.HolderEmail)
     </div>
     <div class="editor-field">
         @Html.EditorFor(model => model.HolderEmail)
+        @Html.ValidationMessageFor(model => model.HolderEmail)
     </div>
     <div class="editor-label">
         @Html.LabelFor(model => model.AccountType)
